@@ -1,0 +1,4 @@
+CREATE TABLE Corsi (codice TEXT PRIMARY KEY NOT NULL, docente INTEGER NOT NULL,    FOREIGN KEY (docente) REFERENCES Docenti(id));
+CREATE TABLE Docenti (id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT NOT NULL, cognome TEXT NOT NULL);
+CREATE TABLE Esami (studente INTEGER, corso TEXT, voto INTEGER CHECK (voto >= 18 AND voto <= 30), data DATETIME DEFAULT CURRENT_DATE, FOREIGN KEY (studente) REFERENCES Studenti(matricola), FOREIGN KEY (corso) REFERENCES Corsi(codice), PRIMARY KEY (studente, corso));
+CREATE TABLE Studenti (matricola INTEGER PRIMARY KEY NOT NULL, nome TEXT NOT NULL, cognome TEXT NOT NULL, telefono TEXT);
